@@ -8,10 +8,10 @@ terraform {
   required_version = ">= 0.14"
 
   backend "remote" {
-    organization = "replace_me"
+    organization = "dps-terraform"
 
     workspaces {
-      name = "replace_me"
+      name = "terraform-aws-dps"
     }
   }
 }
