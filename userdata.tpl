@@ -1,8 +1,7 @@
-#!/bin/bash 
-yum update -y
-yum install httpd -y 
-service httpd start 
-chkconfig httpd on  
-service httpd status  
-cd /var/www/html/ 
-echo "<html><body><h1>${message}</h1></body></html>"  | tee index.html   
+#!/bin/bash -xe
+yum -y update
+yum -y upgrade
+yum install -y httpd
+systemctl enable httpd
+systemctl start httpd
+echo "<html><head><title>Apache Website</title></head><body><h1><center>${message}</center></h1></body></html>" > /var/www/html/index.html
