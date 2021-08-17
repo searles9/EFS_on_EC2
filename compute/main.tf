@@ -6,7 +6,7 @@ resource "random_id" "node_id" {
 
 resource "aws_instance" "web_node" {
   ami                    = var.instance_ami
-  instance_type          = instance_type
+  instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg]
 
   user_data = templatefile(var.user_data_path,
