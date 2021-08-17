@@ -1,7 +1,7 @@
 # --- compute/main.tf ---
 
 resource "random_id" "node_id" {
-  byte_length = 4
+  byte_length = 2
 }
 
 resource "aws_instance" "web_node" {
