@@ -1,7 +1,7 @@
 # --- root main.tf ---
 module "networking" {
-  source            = "./networking"
-  security_groups  = local.security_groups
+  source          = "./networking"
+  security_groups = local.security_groups
 }
 
 module "compute" {
