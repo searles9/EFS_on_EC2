@@ -5,6 +5,7 @@ resource "random_id" "node_id" {
 }
 
 resource "aws_instance" "web_node" {
+  count                  = 1
   ami                    = var.instance_ami
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg]
