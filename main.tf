@@ -14,25 +14,14 @@ module "file-storage" {
   mount-sg = module.networking.main_sg
 }
 
-module "loadbalancing" {
-  source     = "./modules/loadbalancing"
-  lb_sg      = module.networking.main_sg
-  lb_subnets = [module.networking.public_subnet_id]
-}
-
-module "asg-compute" {
-  source = "./modules/asg-compute"
-  # launch template
+module "compute" {
+  source         = "./modules/compute"
+  instance-count = 2
+  instance_ami   = "ami-0c2b8ca1dad447f8a"
+  instance_type  = "t2.micro"
   user_data_path = "${path.cwd}/userdata.tpl"
+  sg             = module.networking.main_sg[0]
+  ec2_subnet_id  = module.networking.public_subnet_id
   fs-id          = module.file-storage.fs-id
   aws-region     = var.aws_region
-  sg_ids         = module.networking.main_sg
-  subnet         = module.networking.public_subnet_id
-  az-placement   = var.az
-  # asg
-
 }
-
-
-#load balancer target group 
-# finish asg (with health check to ping the test file)
