@@ -1,4 +1,11 @@
 # --- loadbalancing/main.tf
 
-# make a LB 
-# add a subnet group to the networking module
+resource "aws_lb" "main_lb" {
+  name            = "main-loadbalancer"
+  security_groups = var.lb_sg
+  subnets         = var.lb_subnets
+}
+
+# target group
+
+# listener

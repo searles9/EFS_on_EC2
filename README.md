@@ -1,4 +1,5 @@
 # AWS Deployment
+The goal behind this project was just to deploy out the required infrastructure. There are several areas where things could be coded different to allow for more flexibility, re-usability and resiliance. 
 
 ### Compute Module
 * [will deploy an autoscaling group with Apache instances]
