@@ -14,17 +14,17 @@ This repo uses GitHub actions for CI/CD and uses Terraform Cloud for state manag
 When changes are merged into the "main" branch they are automatically applied and deployed (assuming they pass the proper checks).
 ***
 ### File Storage Module
-This deploys the following:
+This deploys the following: <br>
 -EFS file system
 ***
 ### Compute Module
-This deploys the following: 
--EC2 instance with a user data script that mounts the EFS file system
+This deploys the following: <br>
+-EC2 instance with a user data script that mounts the EFS file system <br>
 -A security group
 ***
 ### Networking Module
-This deploys the following: 
--A VPC 
+This deploys the following: <br> 
+-A VPC <br>
 -A singular subnet
 ***
 
