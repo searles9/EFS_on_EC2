@@ -33,18 +33,6 @@ module "asg-compute" {
 
 }
 
-# --------------------------------------------------
-#module "compute" {
-#  source         = "./modules/compute"
-#  instance-count = 2
-#  instance_ami   = "ami-0c2b8ca1dad447f8a"
-#  instance_type  = "t2.micro"
-#  user_data_path = "${path.cwd}/userdata.tpl"
-#  sg             = module.networking.main_sg[0]
-#  ec2_subnet_id  = module.networking.public_subnet_id
-#  fs-id          = module.file-storage.fs-id
-#  aws-region     = var.aws_region
-#}
 
 #load balancer target group 
 # finish asg (with health check to ping the test file)
