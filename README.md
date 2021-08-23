@@ -1,6 +1,6 @@
 # AWS Deployment
 This repo/project deploys an EC2 instance with a mounted EFS file system.
-
+***
 #### Room for improovement 
 This a simplistic design and is not fault tolerant. If this were to be made more complex, the following changes could be made:
 * Add an auto scaling group for the EC2 instances
