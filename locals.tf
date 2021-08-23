@@ -1,5 +1,6 @@
 #--root locals.tf --
 
+
 locals {
   security_groups = {
     main = {
@@ -21,6 +22,12 @@ locals {
         ssh = {
           from        = 22
           to          = 22
+          protocol    = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
+        }
+        nfs = {
+          from        = 2049
+          to          = 2049
           protocol    = "tcp"
           cidr_blocks = ["0.0.0.0/0"]
         }
