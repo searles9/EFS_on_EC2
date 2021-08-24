@@ -9,19 +9,21 @@ module "networking" {
 }
 
 module "file-storage" {
-  source   = "./modules/file-storage"
-  subnet   = module.networking.public_subnet_id
-  mount-sg = module.networking.main_sg
+  source       = "./modules/file-storage"
+  efs_subnet   = module.networking.public_subnet_id
+  efs_mount_sg = module.networking.efs_sg
 }
 
 module "compute" {
   source         = "./modules/compute"
-  instance-count = 2
+  depends_on     = [module.file-storage]
+  instance_count = 1
   instance_ami   = "ami-0c2b8ca1dad447f8a"
   instance_type  = "t2.micro"
   user_data_path = "${path.cwd}/userdata.tpl"
-  sg             = module.networking.main_sg[0]
+  security_group = module.networking.ec2_sg[0]
   ec2_subnet_id  = module.networking.public_subnet_id
-  fs-id          = module.file-storage.fs-id
-  aws-region     = var.aws_region
+  efs_id         = module.file-storage.fs_id
+  efs_aws_region = var.aws_region
+  fs_ip          = module.file-storage.fs_ip
 }

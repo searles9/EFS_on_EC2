@@ -1,4 +1,4 @@
 # --- file-storage/variables.tf ---
 
-variable "subnet" {}
-variable "mount-sg" {}
+variable "efs_subnet" {}
+variable "efs_mount_sg" {}

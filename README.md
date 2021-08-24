@@ -5,7 +5,7 @@ This repo/project deploys an EC2 instance with a mounted EFS file system.
 This a simplistic design and is not fault tolerant. If this were to be made more complex, the following changes could be made:
 * Add an auto scaling group for the EC2 instances
 * Add a load balancer for the auto scaling group
-* Add additional mount points
+* Add additional EFS mount points
 * Add additional subnets and design the networking module to be more flexible
 
 ***
@@ -19,12 +19,14 @@ This deploys the following: <br>
 ***
 ### Compute Module
 This deploys the following: <br>
--EC2 instance with a user data script that mounts the EFS file system <br>
--A security group
+-EC2 instance with a user data script that mounts the EFS file system<br>
+* it can take serveral minutes for the efs file system to mount
+* you can check if the file system has been mounted by using this command: df -h
 ***
 ### Networking Module
 This deploys the following: <br> 
 -A VPC <br>
+-A security group <br>
 -A singular subnet
 ***
 
