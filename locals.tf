@@ -2,9 +2,9 @@
 
 locals {
   security_groups = {
-    main = {
-      name        = "main_sg"
-      description = "Main Security Group for EC2 Instances"
+    ec2_sg = {
+      name        = "ec2_sg"
+      description = "SG for EC2 Instances"
       ingress = {
         https = {
           from        = 443
@@ -24,7 +24,26 @@ locals {
           protocol    = "tcp"
           cidr_blocks = ["0.0.0.0/0"]
         }
+        nfs = {
+          from        = 2049
+          to          = 2049
+          protocol    = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
+        }
       }
     }
+    efs_sg = {
+      name        = "efs_sg"
+      description = "SG for EFS"
+      ingress = {
+        nfs = {
+          from        = 2049
+          to          = 2049
+          protocol    = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
+        }
+      }
+    }
+
   }
 }
